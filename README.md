@@ -5,11 +5,11 @@ MakeWindow({
     Animation = "جار تحميل..."
   },
   Key = {
-    KeySystem = false,
+    KeySystem = true,
     Title = "Key System",
-    Description = "",
-    KeyLink = "",
-    Keys = {"1234"},
+    Description = "انضم قناتي لل حصول عل مفتاح",
+    KeyLink = "https://t.me/EZ_HUB1",
+    Keys = {"abb55"},
     Notifi = {
       Notifications = true,
       CorrectKey = "Running the Script...",
@@ -18,7 +18,6 @@ MakeWindow({
     }
   }
 })
-
 --[[
   Hub = {
     Title = "REDz HUB" -- <string> Titulo do seu script
@@ -38,16 +37,15 @@ MakeWindow({
     }
   }
 ]]
-Main = MakeTab({Name = "تيليجرام"})
-AddDiscord(Main, {
-    DiscordLink = "https://t.me/EZ_HUB1",
-    DiscordIcon = "rbxassetid://136300057076089",
-    DiscordTitle = "انضم لقناتي لتعرف كلشي جديد",
-    })
+Main = MakeTab({Name = "معلومات"})
+local Image = AddImageLabel(Main, {
+  Name = "قنات سكربت ",
+  Image = "rbxassetid://136300057076089"
+})
 AddButton(Main, {
   Name = "نسخ حسابي روبلوكس",
   Callback = function()
-    setclipboard('Qu2_t')
+    setclipboard('VR_2MS')
   end
 })
 AddButton(Main, {
@@ -56,7 +54,38 @@ AddButton(Main, {
     setclipboard('it_gk9')
   end
 })
+local Paragraph = AddParagraph(Main, {"السيرفر "})
+-- Create a label to show the number of players
+local playerCountLabel = AddTextLabel(Main, "الاعبين في السيرفر: " .. #game.Players:GetPlayers())
 
+-- Função para atualizar o número de jogadores quando alguém entra ou sai
+local function updatePlayerCount()
+    playerCountLabel.Text = "الاعبين في السيرفر: " .. #game.Players:GetPlayers()
+end
+
+-- Conecta a função ao evento de entrada de novos jogadores
+game.Players.PlayerAdded:Connect(updatePlayerCount)
+
+-- Conecta a função ao evento de saída de jogadores
+game.Players.PlayerRemoving:Connect(updatePlayerCount)
+
+-- Atualiza a contagem de jogadores no início (caso tenha jogadores ao carregar o script)
+updatePlayerCount()
+
+-- Criando a TextLabel
+local Label = AddTextLabel(Main, "")
+
+-- Função para atualizar o tempo na TextLabel
+local function updateTime(label)
+    while true do
+        local currentTime = os.date("%H:%M:%S")
+        label.Text = "وقت: " .. currentTime
+        wait(1)  -- Atualiza a cada segundo
+    end
+end
+
+-- Iniciando a atualização da TextLabel
+coroutine.wrap(updateTime)(Label)
 local Main = MakeTab({Name = "الرؤوس والرجل"})
 
 --[[
@@ -1510,16 +1539,8 @@ local function findPlayerByPartialNameOrNickname(partialName)
 end
 
 -- Adicionando a caixa de texto para entrada do nome ou apelido do jogador
-local Main = MakeTab({Name = "سياره "})
+local Main = MakeTab({Name = "HUNT EGG"})
 
 --[[
   Name = "Main" <string> Nome da guia
 ]]
-local section = AddSection(Main, {"سرعه سياره"})
-local section = AddSection(Main, {"جاري تطوير"})
-local Main = MakeTab({Name = "سكربتات"})
-
---[[
-  Name = "Main" <string> Nome da guia
-]]
-local section = AddSection(Main, {"جاري تطوير"})
